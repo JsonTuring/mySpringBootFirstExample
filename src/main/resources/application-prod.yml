@@ -1,0 +1,14 @@
+server:
+  port: 8081
+#  context-path: /girl
+girl:
+  cupSize: F
+  age: 18
+#content: "cupSize: ${cupSize}, age: ${age}"
+
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://127.0.0.1;instanceName=MSSQLSERVER;DatabaseName=NETHMS_LC;sendStringParametersAsUnicode=false
+    username: sa
+    password: 123
