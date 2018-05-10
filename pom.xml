@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>girl</name>
+	<name>mySpringBootFirstExample</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -67,6 +67,12 @@
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>sqljdbc4</artifactId>
 			<version>4.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.1.8</version>
 		</dependency>
 
 		<!--AOP-->

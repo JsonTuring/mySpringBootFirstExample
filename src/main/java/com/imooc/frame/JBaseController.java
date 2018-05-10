@@ -1,6 +1,6 @@
 package com.imooc.frame;
 
-import com.imooc.frame.tool.MapUtil;
+import com.imooc.frame.utils.MapUtil;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 

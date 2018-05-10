@@ -8,7 +8,7 @@ $('#btn').on('click', function () {
         data: {
             jgmc:"虹口区凉城新村街道社区卫生服务中心",
             // hisypbm:"092"
-            hisypbm:""
+            hisypbm:"092"
         },
         success: function (data) {
             alert(JSON.stringify(data));

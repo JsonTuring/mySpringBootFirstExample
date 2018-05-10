@@ -5,7 +5,8 @@ import com.imooc.domain.InterfaceResult;
 import com.imooc.enums.InterfaceResultEnum;
 import com.imooc.frame.utils.InterfaceResultUtil;
 import com.imooc.frame.utils.StringUtil;
-import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ import java.util.Map;
  */
 @Service
 public class HelloServiceImpl implements HelloService {
+    private final static Logger logger = LoggerFactory.getLogger(HelloServiceImpl.class);
 
     @Resource
     private HelloDao helloDao;
@@ -43,6 +45,8 @@ public class HelloServiceImpl implements HelloService {
             interfaceResult = InterfaceResultUtil.success(InterfaceResultEnum.SUCCESS,listMap);
         }
         catch (Exception e){
+            //记录ERROR级别日志 TRACE < DEBUG < INFO < WARN < ERROR
+            logger.error(e.toString());
             interfaceResult = InterfaceResultUtil.error(InterfaceResultEnum.UNKONW_ERROR);
         }
         return interfaceResult;

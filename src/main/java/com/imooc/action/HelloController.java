@@ -1,11 +1,8 @@
 package com.imooc.action;
 
-import com.imooc.GirlProperties;
 import com.imooc.domain.InterfaceResult;
 import com.imooc.frame.JBaseController;
 import com.imooc.service.HelloService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +19,6 @@ import java.util.Map;
  */
 @RestController
 public class HelloController extends JBaseController{
-    private final static Logger logger = LoggerFactory.getLogger(HelloController.class);
-
-    @Autowired
-    private GirlProperties girlProperties;
 
     @Resource
     private HelloService helloService;
@@ -41,11 +34,7 @@ public class HelloController extends JBaseController{
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String say(){
-        return girlProperties.getCupSize();
-    }
-    @RequestMapping(value = "/hellojson", method = RequestMethod.GET)
-    public GirlProperties getJson(){
-        return girlProperties;
+        return "";
     }
 
     @GetMapping(value = "/getdata")
