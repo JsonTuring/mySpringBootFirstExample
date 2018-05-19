@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.imooc.dao")
-public class GirlApplication {
+public class mySpringBootFirstExample {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GirlApplication.class, args);
+		SpringApplication.run(mySpringBootFirstExample.class, args);
 	}
 }

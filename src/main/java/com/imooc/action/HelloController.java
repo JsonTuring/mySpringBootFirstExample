@@ -23,15 +23,6 @@ public class HelloController extends JBaseController{
     @Resource
     private HelloService helloService;
 
-//    @Value("${cupSize}")
-//    private String cupSize;
-//
-//    @Value("${age}")
-//    private Integer age;
-//
-//    @Value("${content}")
-//    private String content;
-
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String say(){
         return "";
@@ -49,4 +40,5 @@ public class HelloController extends JBaseController{
         InterfaceResult ires = helloService.getInterfaceData(map);
         return ires;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.imooc;
 
+import com.imooc.comm.filter.SecurityFilter;
 import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +27,7 @@ public class WebConfiguration {
     public FilterRegistrationBean testFilterRegistration() {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new MyFilter());
+        registration.setFilter(new SecurityFilter());
         registration.addUrlPatterns("/*");
         registration.addInitParameter("paramName", "paramValue");
         registration.setName("MyFilter");
@@ -34,23 +35,4 @@ public class WebConfiguration {
         return registration;
     }
 
-    public class MyFilter implements Filter{
-
-        @Override
-        public void init(FilterConfig filterConfig) throws ServletException {
-
-        }
-
-        @Override
-        public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-            HttpServletRequest request = (HttpServletRequest) servletRequest;
-            System.out.println("this is MyFilter,url :"+request.getRequestURI());
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
-
-        @Override
-        public void destroy() {
-
-        }
-    }
 }

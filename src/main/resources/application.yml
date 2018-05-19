@@ -1,6 +1,10 @@
 spring:
   profiles:
     active: dev
+  #spring boot框架默认模板路径，不配置即为该路径
+  thymeleaf:
+    prefix: classpath:/templates/
+
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mappers/*.xml
