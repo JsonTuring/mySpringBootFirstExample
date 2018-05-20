@@ -7,6 +7,7 @@ public enum InterfaceResultEnum {
     UNKONW_ERROR(-1,"系统错误,错误内容请查看系统日志"),
     SUCCESS(0,"成功"),
     HISYPBM(9,"HIS药品编码不能为空"),
+    LOGIN_ERROR(1,"用户名或密码错误"),
     ;
 
     private Integer code;

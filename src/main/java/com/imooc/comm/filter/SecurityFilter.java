@@ -17,6 +17,7 @@ public class SecurityFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         GreenUrlSet.add("/login");
         GreenUrlSet.add("/user/login");
+        GreenUrlSet.add("index.html");
     }
 
     @Override
@@ -26,7 +27,7 @@ public class SecurityFilter implements Filter {
         System.out.println("过滤器sesion-id:"+request.getSession().getId());
         if(request.getSession().getAttribute(Const.LOGIN_SESSION_KEY) == null){
             //绿链请求直接放行，终止过滤器代码继续执行。
-            if(GreenUrlSet.contains(uri)){
+            if(containsSuffix(uri) || GreenUrlSet.contains(uri)){
                 filterChain.doFilter(servletRequest, servletResponse);
                 return;
             }
@@ -46,5 +47,24 @@ public class SecurityFilter implements Filter {
     @Override
     public void destroy() {
 
+    }
+
+    private boolean containsSuffix(String url) {
+        if (url.endsWith(".js")
+                || url.endsWith(".css")
+                || url.endsWith(".jpg")
+                || url.endsWith(".gif")
+                || url.endsWith(".png")
+                || url.endsWith(".html")
+                || url.endsWith(".eot")
+                || url.endsWith(".svg")
+                || url.endsWith(".ttf")
+                || url.endsWith(".woff")
+                || url.endsWith(".ico")
+                || url.endsWith(".woff2")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
