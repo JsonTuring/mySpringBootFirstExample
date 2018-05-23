@@ -28,4 +28,9 @@ public class IndexController extends JBaseController {
     public String login() {
         return "/login";
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
+        return "/register";
+    }
 }

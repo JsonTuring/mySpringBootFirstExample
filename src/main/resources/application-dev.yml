@@ -12,6 +12,6 @@ girl:
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://127.0.0.1;instanceName=MSSQLSERVER;DatabaseName=NETHMS_LC;sendStringParametersAsUnicode=false
+    url: jdbc:sqlserver://127.0.0.1;instanceName=MSSQLSERVER;DatabaseName=SPRING_BOOT_FIRST;sendStringParametersAsUnicode=false
     username: sa
     password: 123

@@ -15,6 +15,9 @@ public class SecurityFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+
+        GreenUrlSet.add("/register");
+        GreenUrlSet.add("/user/register");
         GreenUrlSet.add("/login");
         GreenUrlSet.add("/user/login");
         GreenUrlSet.add("index.html");
@@ -23,6 +26,8 @@ public class SecurityFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        //设置字符集
+        request.setCharacterEncoding("UTF-8");
         String uri = request.getRequestURI();
         System.out.println("过滤器sesion-id:"+request.getSession().getId());
         if(request.getSession().getAttribute(Const.LOGIN_SESSION_KEY) == null){

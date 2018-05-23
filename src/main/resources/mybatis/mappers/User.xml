@@ -1,8 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.imooc.dao.UserDao">
-
     <select id="getUserInfo" resultType="java.util.Map" parameterType="java.util.Map">
-        select * from sys_czry where dldm = #{username} and dldm = #{password}
+        select * from [USER] where username = #{username} and password = #{password}
     </select>
+
+    <select id="findByEmail" resultType="java.util.Map" parameterType="java.lang.String">
+        select * from [USER] where email = #{email}
+    </select>
+
+    <select id="findByUserName" resultType="java.util.Map" parameterType="java.lang.String">
+        select * from [USER] where username = #{username}
+    </select>
+
+    <insert id="saveRegister" parameterType="java.util.Map">
+        INSERT INTO [USER]
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="createtime != null">
+                createtime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+            <if test="createtime != null">
+                #{createtime},
+            </if>
+        </trim>
+    </insert>
+
 </mapper>
