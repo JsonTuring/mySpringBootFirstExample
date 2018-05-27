@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="htmlhead">
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+    <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon" />
+    <title >轻旅行 | 让旅行更简单</title>
+    <link rel="stylesheet" th:href="@{/bootstrap-3.3.7/css/bootstrap.min.css}" />
+</head>
+
+<body class="layout-fixed">
+<div th:fragment="navbar"  class="wrapper"  role="navigation">
+    <div th:replace="fragments/header :: header">Header</div>
+    <div th:replace="fragments/left :: left">left</div>
+    <div layout:fragment="content" id="content" ></div>
+    <div th:replace="fragments/footer :: footer">footer</div>
+</div>
+<script type="text/javascript" th:src="@{/jquery/jquery-3.3.1.min.js}"></script>
+</body>
+</html>

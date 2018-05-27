@@ -1,21 +1,23 @@
 package com.imooc.action;
 
-import com.imooc.frame.JBaseController;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 /**
- * Created by JSON on 2018/05/10.
+ * @author zhuguoxiang
+ * @date 2018/05/10
  */
 @Controller
-public class IndexController extends JBaseController {
-
+public class IndexController extends BaseController {
     @RequestMapping(value="/")
-    public String home(HttpServletRequest request) {
+    public String home(HttpServletRequest request, Model model) {
         System.out.println("home-sesion-id:"+request.getSession().getId());
+        model.addAttribute("user",getUser());
         return "/home";
     }
 
@@ -32,5 +34,15 @@ public class IndexController extends JBaseController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register() {
         return "/register";
+    }
+
+    @RequestMapping(value="/forgotPassword",method=RequestMethod.GET)
+    public String forgotPassword() {
+        return "user/forgotpassword";
+    }
+
+    @RequestMapping(value="/newPassword",method=RequestMethod.GET)
+    public String newPassword() {
+        return "user/newpassword";
     }
 }

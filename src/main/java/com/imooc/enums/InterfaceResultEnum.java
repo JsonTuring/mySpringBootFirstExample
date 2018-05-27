@@ -9,6 +9,8 @@ public enum InterfaceResultEnum {
     HISYPBM(9,"HIS药品编码不能为空"),
     LOGIN_ERROR(1,"用户名或密码错误"),
     EMAIL_USED(2,"该邮箱已被注册"),
+    EMAIL_NOT_REGISTER(201,"该邮箱地址未注册"),
+    LINK_OUTDATED(202,"该链接已过期，请重新请求"),
     USERNAME_USED(3,"该登录名称已存在"),
     EMAIL_NOT_NULL(4,"email不允许为空"),
     USER_NOT_NULL(5,"用户名不允许为空"),

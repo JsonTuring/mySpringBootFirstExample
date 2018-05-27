@@ -6,6 +6,9 @@ girl:
   age: 18
 #content: "cupSize: ${cupSize}, age: ${age}"
 
+system:
+  base:
+    path: http://127.0.0.1:8022/
 
 
 

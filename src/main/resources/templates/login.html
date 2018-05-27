@@ -1,17 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon" />
+    <title >轻旅行 | 让旅行更简单</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
-    用户名：<input type="text" name="username" id="username"/>
-    密码：<input type="password" name="password" id="password"/>
-    <button id="btn_login">登录</button>
-    <a href="/register" class="btn btn-block btn-default">注册</a>
-    <div id="errorMsg" style="display:none;"></div>
+    <div class="wrapper">
+        <div class="block-center mt-xl wd-xl">
+            <div class="panel panel-dark panel-flat">
+                <div class="panel-heading text-center">
+                    <a href="/index">
+                        <h1 style="color: white;font-size: 1.250em;">TRAVEL&nbsp;&amp;&nbsp;LIGHT</h1>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <p class="text-center pv">请登录</p>
+                    <form id="form" data-parsley-validate="true" onsubmit="return false">
+                        <div class="form-group">
+                            <input type="text" placeholder="邮箱地址或登录名称" name="username"
+                                   id="username" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="密码" name="password"
+                                   id="password" class="form-control"/>
+                        </div>
+                        <div class="clearfix">
+                            <div class="pull-right">
+                                <a href="/forgotPassword" class="text-muted">忘记密码？</a>
+                            </div>
+                        </div>
+                        <button id="btn_login" class="btn btn-block btn-primary mt-lg">登录</button>
+                    </form>
+                    <div id="errorMsg" class="alert alert-danger text-center" style="display:none;margin-top: 5px;"></div>
+                    <p class="pt-lg text-center">需要注册？</p>
+                    <a href="/register" class="btn btn-block btn-default">现在就注册</a>
+                </div>
+            </div>
+            <div class="p-lg text-center">
+                <span>&copy;</span>
+                <span>2016</span>
+                <span>-</span>
+                <span>2018</span>
+                <br/>
+                <span>www.travellight.xyz</span>
+            </div>
+        </div>
+
+    </div>
 </body>
-<script type="text/javascript" src="../index/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
 <script type="application/javascript">
     $("#btn_login").on('click',function () {
         $.ajax({

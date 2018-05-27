@@ -1,24 +1,18 @@
 package com.imooc.action;
 
 import com.imooc.domain.InterfaceResult;
-import com.imooc.frame.JBaseController;
 import com.imooc.service.HelloService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by JSON on 2018/04/22.
  */
 @RestController
-public class HelloController extends JBaseController{
+public class HelloController extends BaseController {
 
     @Resource
     private HelloService helloService;

@@ -6,9 +6,15 @@ girl:
   age: 18
 #content: "cupSize: ${cupSize}, age: ${age}"
 
+system:
+  base:
+    path: http://127.0.0.1:8022/
+
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://127.0.0.1;instanceName=MSSQLSERVER;DatabaseName=NETHMS_LC;sendStringParametersAsUnicode=false
     username: sa
     password: 123
+
+

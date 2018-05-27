@@ -21,6 +21,10 @@ public class SecurityFilter implements Filter {
         GreenUrlSet.add("/login");
         GreenUrlSet.add("/user/login");
         GreenUrlSet.add("index.html");
+        GreenUrlSet.add("/forgotPassword");
+        GreenUrlSet.add("/user/sendForgotPasswordEmail");
+        GreenUrlSet.add("/newPassword");
+        GreenUrlSet.add("/user/setNewPassword");
     }
 
     @Override
@@ -38,9 +42,9 @@ public class SecurityFilter implements Filter {
             }
             String html = "";
             //String base_path = "http://127.0.0.1:8022/user/";
-            html = "<script type=\"text/javascript\">window.location.href=\"login\"</script>";
+            html = "<script type=\"text/javascript\">window.location.href=\"_BP_login\"</script>";
             System.out.println("this is MyFilter,url :"+request.getRequestURI());
-            //html = html.replace("_BP_", base_path);
+            html = html.replace("_BP_", Const.BASE_PATH);
             servletResponse.getWriter().write(html);
         }else {
             //已登录状态下，直接放行

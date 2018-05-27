@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.imooc.dao.UserDao">
-    <select id="getUserInfo" resultType="java.util.Map" parameterType="java.util.Map">
-        select * from [USER] where username = #{username} and password = #{password}
+
+    <select id="getUserInfoByUsernameAndPwd" resultType="java.util.Map" parameterType="java.lang.String">
+        select id,username,email,profilepicture,introduction,createtime,
+        lastmodifytime,outdate,validatecode,backgroundpicture
+         from [USER] where (username = #{username} or email = #{username})
+          and password = #{password}
     </select>
 
     <select id="findByEmail" resultType="java.util.Map" parameterType="java.lang.String">
-        select * from [USER] where email = #{email}
+        select id,username,email,profilepicture,introduction,createtime,
+        lastmodifytime,outdate,validatecode,backgroundpicture
+         from [USER] where email = #{email}
     </select>
 
     <select id="findByUserName" resultType="java.util.Map" parameterType="java.lang.String">
-        select * from [USER] where username = #{username}
+        select id,username,email,profilepicture,introduction,createtime,
+        lastmodifytime,outdate,validatecode,backgroundpicture
+         from [USER] where username = #{username}
     </select>
 
     <insert id="saveRegister" parameterType="java.util.Map">
@@ -51,4 +59,26 @@
         </trim>
     </insert>
 
+    <update id="setOutDateAndValidataCode" parameterType="java.lang.String">
+        update [USER]
+        <set>
+            <if test="outdate != null">
+                OUTDATE = #{outdate},
+            </if>
+            <if test="validatecode != null">
+                VALIDATECODE = #{validatecode},
+            </if>
+        </set>
+        where  EMAIL=#{email}
+    </update>
+
+    <update id="setNewPassword" parameterType="java.lang.String">
+        update [USER]
+        <set>
+            <if test="newpassword != null">
+                PASSWORD = #{newpassword},
+            </if>
+        </set>
+        where  EMAIL=#{email}
+    </update>
 </mapper>
