@@ -45,4 +45,10 @@ public class IndexController extends BaseController {
     public String newPassword() {
         return "user/newpassword";
     }
+
+    @RequestMapping(value="/test")
+    public String test(HttpServletRequest request, Model model) {
+        model.addAttribute("user",getUser());
+        return "/test_content/test";
+    }
 }
