@@ -3,7 +3,7 @@
 <mapper namespace="com.imooc.dao.UserDao">
 
     <select id="getUserInfoByUsernameAndPwd" resultType="java.util.Map" parameterType="java.lang.String">
-        select id,username,email,profilepicture,introduction,createtime,
+        select id,username,password,email,profilepicture,introduction,createtime,
         lastmodifytime,outdate,validatecode,backgroundpicture
          from [USER] where (username = #{username} or email = #{username})
           and password = #{password}

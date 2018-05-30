@@ -1,6 +1,7 @@
 package com.imooc.service;
 
 import com.imooc.action.UserController;
+import com.imooc.comm.filter.Const;
 import com.imooc.dao.UserDao;
 import com.imooc.domain.InterfaceResult;
 import com.imooc.enums.InterfaceResultEnum;
@@ -156,6 +157,23 @@ public class UserServiceImpl extends BaseService implements UserService {
             return InterfaceResultUtil.success(InterfaceResultEnum.SUCCESS);
         }catch (Exception e){
             logger.error("用户设置新密码错误："+e.toString());
+            return InterfaceResultUtil.error(InterfaceResultEnum.UNKONW_ERROR);
+        }
+
+    }
+
+    @Override
+    public InterfaceResult updatePassword(String currSesionPassword, String oldPassword, String newPassword, String email) {
+        try{
+            String newpwd = getEncryptedPwd(newPassword);
+            if(currSesionPassword.equals(getEncryptedPwd(oldPassword))){
+                userDao.setNewPassword(newpwd, email);
+                return InterfaceResultUtil.success(InterfaceResultEnum.SUCCESS,newpwd);
+            }else{
+                return InterfaceResultUtil.error(InterfaceResultEnum.PASSWORD_ERROR);
+            }
+        }catch (Exception e){
+            logger.error("用户修改密码错误："+e.toString());
             return InterfaceResultUtil.error(InterfaceResultEnum.UNKONW_ERROR);
         }
 

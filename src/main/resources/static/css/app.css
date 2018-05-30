@@ -261,9 +261,26 @@ a:focus, a:hover{
 }
 
 
-/*右侧弹出设置框*/
+/*右侧弹出设置框****开始*******/
 .offsidebar-open .offsidebar {
     z-index: 116;
     overflow: hidden;
     overflow-y: auto;
+    right: 0;
 }
+
+.offsidebar {
+    border-left: 1px solid #cccccc;
+    background-color: #ffffff;
+    color: #515253;
+    margin-top: 55px;
+}
+
+.offsidebar {
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    width: 220px;
+}
+/*右侧弹出设置框****结束*******/

@@ -82,4 +82,28 @@ public class UserController extends BaseController {
         InterfaceResult result = userService.setNewPassword(map);
         return result;
     }
+
+    @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+    public InterfaceResult updatePassword(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            initMap(request);
+            Map sessionMap = (Map)request.getSession().getAttribute(Const.LOGIN_SESSION_KEY);
+            String currSesionPassword = sessionMap.get("password").toString();
+            String currEmail = sessionMap.get("email").toString();
+            String oldPassword = map.get("oldPassword").toString();
+            String newPassword = map.get("newPassword").toString();
+            InterfaceResult result = userService
+                    .updatePassword(currSesionPassword,oldPassword,newPassword,currEmail);
+            if(result.getData() != null){
+                String updatedPwd = result.getData().toString();
+                sessionMap.put("password",updatedPwd);
+                request.getSession().setAttribute(Const.LOGIN_SESSION_KEY,sessionMap);
+            }
+            result.setData(null);
+            return result;
+        } catch (Exception e) {
+            logger.error("用户修改密码错误："+e.toString());
+            return InterfaceResultUtil.error(InterfaceResultEnum.UNKONW_ERROR);
+        }
+    }
 }

@@ -15,6 +15,7 @@ public enum InterfaceResultEnum {
     EMAIL_NOT_NULL(4,"email不允许为空"),
     USER_NOT_NULL(5,"用户名不允许为空"),
     PASSWORD_NOT_NULL(6,"密码不允许为空"),
+    PASSWORD_ERROR(7,"密码输入错误"),
     ;
 
     private Integer code;

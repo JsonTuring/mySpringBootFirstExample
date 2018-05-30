@@ -17,4 +17,7 @@ public interface UserService {
     public InterfaceResult sendForgotPasswordEmail(Map map);
 
     public InterfaceResult setNewPassword(Map map);
+
+    public InterfaceResult updatePassword(
+            String currSesionPassword, String oldPassword,String newPassword, String email);
 }
