@@ -34,6 +34,8 @@ public class UserServiceImpl extends BaseService implements UserService {
     private JavaMailSender mailSender;
     @Value("${forgotpassword.url}")
     private String forgotpasswordUrl;
+    @Value("${resetpassword.url}")
+    private String resetpasswordUrl;
     @Value("${mail.content.forgotpassword}")
     private String mailContent;
     @Value("${spring.mail.username}")
@@ -104,7 +106,7 @@ public class UserServiceImpl extends BaseService implements UserService {
                 email = map.get("email").toString();
             }
             //判断邮箱是否未注册
-            Map userMap = userDao.findByEmail(map.get("email").toString());
+            Map userMap = userDao.findByEmail(email);
             if (null == userMap) {
                 return InterfaceResultUtil.error(InterfaceResultEnum.EMAIL_NOT_REGISTER);
             }
@@ -117,7 +119,7 @@ public class UserServiceImpl extends BaseService implements UserService {
             String key = email + "$" + date + "$" + secretKey;
             //数字签名
             String digitalSignature = MD5Util.encrypt(key);
-            String resetPassHref = forgotpasswordUrl + "?sid="
+            String resetPassHref = resetpasswordUrl + "?sid="
                     + digitalSignature +"&email="+email;
             String emailContent = MessageUtil.getMessage(mailContent, resetPassHref, forgotpasswordUrl);
             MimeMessage mimeMessage = mailSender.createMimeMessage();

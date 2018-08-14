@@ -21,11 +21,14 @@ spring:
             port: 465
 
 forgotpassword:
+  url: http://localhost:8022/forgotPassword
+
+resetpassword:
   url: http://localhost:8022/newPassword
 
 mail:
   content:
-    forgotpassword: 我们听说你丢失了轻旅行网站的登录密码。很抱歉！<br /><br />但是别担心！您可以使用以下链接重置您的密码：<br /><br /><a href="REPLACE_PATH">REPLACE_PATH</a><br /><br />如果你在3小时内不使用这个链接，它将过期。要获得新的密码重置链接，请访问REPLACE_NEWPWD_PATH<br/><br/>如果您未发送密码修改请求请忽略此邮件，谢谢
+    forgotpassword: 我们听说你丢失了轻旅行网站的登录密码。很抱歉！<br /><br />但是别担心！您可以使用以下链接重置您的密码：<br /><br /><a href="REPLACE_PATH">REPLACE_PATH</a><br /><br />如果你在30分钟内不使用这个链接，它将过期。要获得新的密码重置链接，请访问REPLACE_NEWPWD_PATH<br/><br/>如果您未发送密码修改请求请忽略此邮件，谢谢
   subject:
     #forgotpassword: \u5BC6\u7801\u91CD\u7F6E\u90AE\u4EF6
     forgotpassword: 密码重置邮件

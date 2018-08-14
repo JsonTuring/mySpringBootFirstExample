@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -23,15 +24,17 @@ public class HelloController extends BaseController {
     }
 
     @GetMapping(value = "/getdata")
-    public Map getdata(HttpServletRequest request){
+    public Map getdata(HttpServletRequest request, HttpServletResponse response){
         initMap(request);
         Map<String,Object> resultMap = helloService.getData(map);
+
         return resultMap;
     }
     @GetMapping(value = "/getInterfaceData")
-    public InterfaceResult getInterfaceData(HttpServletRequest request){
+    public InterfaceResult getInterfaceData(HttpServletRequest request,HttpServletResponse response){
         initMap(request);
         InterfaceResult ires = helloService.getInterfaceData(map);
+
         return ires;
     }
 

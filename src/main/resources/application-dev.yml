@@ -1,5 +1,8 @@
 server:
   port: 8022
+  session:
+    timeout: 30
+
 #  context-path: /girl
 girl:
   cupSize: B
